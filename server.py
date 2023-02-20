@@ -40,7 +40,8 @@ def logout():
 
 @app.route("/view_decks")
 def all_decks():
-    return render_template("view_decks.html")
+    public_decks = crud.get_public_decks()
+    return render_template("view_decks.html", public_decks=public_decks)
 
 @app.route("/categories")
 def users_categories():

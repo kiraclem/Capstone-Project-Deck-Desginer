@@ -5,4 +5,8 @@
 
 <h1> View Decks </h1>
 
+{% for deck in public_decks %}
+    {{ deck.deck_name }}
+{% endfor %}
+
 {% endblock %}

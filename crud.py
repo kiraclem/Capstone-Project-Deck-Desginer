@@ -39,11 +39,12 @@ def create_card(card_name, deck_id, image_id):
     return card
 
 
-#GET ALL
-def get_decks():
-    return Deck.query.all()
-
-
+# GET ALL PUBLIC DECKS
+def get_public_decks():
+    public_decks = Deck.query.filter(Deck.private == False).all()
+    return public_decks
+    
+    
 #GET BY ID
 def get_user_by_id(user_id):
     return User.query.get(user_id)
@@ -77,6 +78,7 @@ def get_decks_by_category(category):
 def get_cards_by_deck(deck):
     deck = Deck.query.get(deck)
     return deck.card
+
 
 
 # CARD FUNCTIONS
