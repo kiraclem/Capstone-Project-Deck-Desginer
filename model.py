@@ -37,6 +37,8 @@ class Deck(db.Model):
     private = db.Column(db.Boolean, default=True)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.category_id"))
 
+    deck = db.relationship("Category", backref="deck")
+
     def __repr__(self):
         return f'<Decks deck_id = {self.deck_id} deck_name = {self.deck_name}>'
 
@@ -59,6 +61,8 @@ class Card(db.Model):
     card_name = db.Column(db.String)
     deck_id =  db.Column(db.Integer, db.ForeignKey("decks.deck_id"))
     image_id = db.Column(db.Integer, db.ForeignKey("images.image_id"))
+
+    deck = db.relationship("Deck", backref="card")
 
     def __repr__(self):
             return f'<Image card_id = {self.card_id} card_name = {self.card_name}>'

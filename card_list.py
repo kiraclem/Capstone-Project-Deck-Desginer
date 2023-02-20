@@ -22,17 +22,17 @@ card_list = [
     'joker'
   ]
 
-# TYPE = 1, 2, A, Q, J ect. or joker
-def get_card_type(card): 
-    card = card.split(" ")
-    card_type = card[0]
-    return card_type
+# # TYPE = 1, 2, A, Q, J ect. or joker
+# def get_card_type(card): 
+#     card = card.split(" ")
+#     card_type = card[0]
+#     return card_type
 
-# FAMILY = spades, diamonds, hearts ect. 
-def get_card_family(card): 
-    card = card.split(" ")
-    card_type = card[2]
-    return card_type
+# # FAMILY = spades, diamonds, hearts ect. 
+# def get_card_family(card): 
+#     card = card.split(" ")
+#     card_type = card[2]
+#     return card_type
 
 # for c in card_list:
 #     print(c)

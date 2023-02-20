@@ -4,5 +4,11 @@
 {% block body %}
 
 <h1> Categories </h1>
+<ul>
+    {% for cat in categories %}
+
+    <h2>cat name: <a href="/categories/{{ cat.category_id }}">{{cat.category_name}}</a></h2>
+</ul>
+    {% endfor %}
 
 {% endblock %}
