@@ -1,4 +1,3 @@
-# 58 cards
 card_list = [
     '1 of diamonds',  '1 of clubs',    '1 of hearts',
     '1 of spades',    '2 of diamonds', '2 of clubs',
@@ -21,26 +20,3 @@ card_list = [
     'J of hearts',    'J of spades',   'joker',
     'joker'
   ]
-
-# # TYPE = 1, 2, A, Q, J ect. or joker
-# def get_card_type(card): 
-#     card = card.split(" ")
-#     card_type = card[0]
-#     return card_type
-
-# # FAMILY = spades, diamonds, hearts ect. 
-# def get_card_family(card): 
-#     card = card.split(" ")
-#     card_type = card[2]
-#     return card_type
-
-# for c in card_list:
-#     print(c)
-
-# print(get_card_type("joker"))
-# print(get_card_type("A of hearts"))
-# print(get_card_type("10 of diamonds"))
-
-# print(get_card_family("1 of spades"))
-# print(get_card_family("A of hearts"))
-# print(get_card_family("10 of diamonds"))

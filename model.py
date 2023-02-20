@@ -49,6 +49,8 @@ class Image(db.Model):
     image_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     #LargeBinary, (file selection HTML)
     image_ref = db.Column(db.String)
+
+    card = db.relationship("Card", backref="image")
     
 
     def __repr__(self):
@@ -59,6 +61,8 @@ class Card(db.Model):
 
     card_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     card_name = db.Column(db.String)
+    card_type = db.Column(db.String)
+    card_family = db.Column(db.String)
     deck_id =  db.Column(db.Integer, db.ForeignKey("decks.deck_id"))
     image_id = db.Column(db.Integer, db.ForeignKey("images.image_id"))
 

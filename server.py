@@ -9,6 +9,7 @@ app = Flask(__name__)
 app.secret_key = "Hello"
 app.jinja_env.undefined = StrictUndefined
 
+#HOME, LOGIN, AND LOGOUT:
 @app.route("/")
 def home():
     return render_template("homepage.html")
@@ -38,11 +39,14 @@ def logout():
     flash("logged out successfully")
     return redirect("/")
 
+#PUBLIC DECKS:
 @app.route("/view_decks")
 def all_decks():
     public_decks = crud.get_public_decks()
     return render_template("view_decks.html", public_decks=public_decks)
 
+
+#CATEGORIES:
 @app.route("/categories")
 def users_categories():
     user_session = session.get("user_id")
@@ -56,10 +60,19 @@ def users_categories():
         flash("please log in to get access to this page.")
         return redirect("/")
 
+    #CREATE
+@app.route("/categories/create")
+def create_cat():
+    return render_template("create_category.html")
+
+
 @app.route("/categories", methods=["POST"])
 def create_category():
     return redirect("/categories")
+    
 
+
+#DECKS
 @app.route("/categories/<category_id>")
 def decks(category_id):
 
@@ -73,10 +86,7 @@ def decks(category_id):
         flash("please log in to get access to this page.")
         return redirect("/")
 
-@app.route("/categories/<category_id>/decks", methods=["POST"])
-def create_deck():
-    return redirect("/categories/decks")
-
+#CARDS
 @app.route("/categories/<category_id>/<deck_id>")
 def view_cards(category_id, deck_id):
     user_session = session.get("user_id")

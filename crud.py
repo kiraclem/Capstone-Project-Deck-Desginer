@@ -30,9 +30,11 @@ def create_image(image_ref):
         )
     return image
 
-def create_card(card_name, deck_id, image_id):
+def create_card(card_name, card_type, card_family, deck_id, image_id):
     card = Card(
         card_name=card_name,
+        card_type=card_type,
+        card_family=card_family,
         deck_id=deck_id,
         image_id=image_id
         )
@@ -44,7 +46,7 @@ def get_public_decks():
     public_decks = Deck.query.filter(Deck.private == False).all()
     return public_decks
     
-    
+
 #GET BY ID
 def get_user_by_id(user_id):
     return User.query.get(user_id)
@@ -91,5 +93,9 @@ def get_card_type(card):
     # FAMILY = spades, diamonds, hearts ect. 
 def get_card_family(card): 
     card = card.split(" ")
-    card_type = card[2]
-    return card_type
+    if len(card) > 1:
+        card_family = card[2]
+        return card_family
+    else:
+        card_family = "joker"
+        return card_family
