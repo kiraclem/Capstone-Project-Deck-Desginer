@@ -62,15 +62,42 @@ def users_categories():
 
     #CREATE
 @app.route("/categories/create")
-def create_cat():
+def create_category():
     return render_template("create_category.html")
 
 
 @app.route("/categories", methods=["POST"])
-def create_category():
-    return redirect("/categories")
-    
+def create_cat():
+    user_session = session.get("user_id")
 
+    if user_session:
+        user_id = session["user_id"]
+        category_name = request.form.get("category_name")
+        category = crud.create_category(category_name, user_id)
+        with app.app_context():
+            db.session.add(category)
+            db.session.commit()
+            return redirect("/categories")
+    
+    else:
+        flash("please log in to get access to this page.")
+        return redirect("/")
+    
+    #DELETE
+@app.route("/categories/<category_id>/delete")
+def delete(category_id):
+    user_session = session.get("user_id")
+
+    if user_session:
+        with app.app_context():
+            category = crud.get_category_by_id(category_id)
+            db.session.delete(category)
+            db.session.commit()
+        return redirect("/categories")
+    else:
+        flash("please log in to get access to this page.")
+        return redirect("/")
+    
 
 #DECKS
 @app.route("/categories/<category_id>")

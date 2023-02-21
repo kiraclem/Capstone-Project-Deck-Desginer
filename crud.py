@@ -52,16 +52,16 @@ def get_user_by_id(user_id):
     return User.query.get(user_id)
 
 def get_category_by_id(category_id):
-    return User.query.get(category_id)
+    return Category.query.get(category_id)
 
 def get_deck_by_id(deck_id):
-    return User.query.get(deck_id)
+    return Deck.query.get(deck_id)
 
 def get_image_by_id(image_id):
-    return User.query.get(image_id)
+    return Image.query.get(image_id)
 
 def get_card_by_id(card_id):
-    return User.query.get(card_id)
+    return Card.query.get(card_id)
 
 
 # GET BY
