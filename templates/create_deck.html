@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} Category {% endblock %}
+
+{% block body %}
+
+<h1> Create Category </h1>
+<form action="/categories/{{category_id}}", method="POST">
+
+    <p>Deck Name <input type="text" name="deck_name"></p>
+    Deck Visibility <select name="private" id="private">
+        <option value="True">public</option>
+        <option value="False">private</option>
+    </select>
+
+    <p><input type="submit"></p>
+</form>
+
+{% endblock %}

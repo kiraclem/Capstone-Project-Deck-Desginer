@@ -4,9 +4,12 @@
 {% block body %}
 
 <h1> Decks </h1>
+<h2><a href="/categories/{{ category_id }}/create_deck">+</a></h2>
 <ul>
     {% for deck in decks %}
         <a href="/categories/{{ category_id }}/{{ deck.deck_id }}">{{ deck.deck_name }}</a>
+
+        <h2><a href="/categories/{{ category_id }}/{{ deck.deck_id }}/delete">-</a></h2>
     {% endfor %}
 </ul>
 

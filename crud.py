@@ -1,4 +1,5 @@
 from model import User, Category, Deck, Image, Card
+from lists import card_list
 
 
 # CREATE TABLES
@@ -89,6 +90,17 @@ def get_card_type(card):
     card = card.split(" ")
     card_type = card[0]
     return card_type
+
+# CREATE ALL CARDS
+
+def create_deck_of_cards(deck_id, image_id):
+    for name in card_list:
+        card_name = name
+        card_type = get_card_type(name)
+        card_family = get_card_family(name)
+
+        cards = create_card(card_name, card_type, card_family, deck_id, image_id)
+        return cards
 
     # FAMILY = spades, diamonds, hearts ect. 
 def get_card_family(card): 
