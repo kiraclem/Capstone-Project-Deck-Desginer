@@ -1,13 +1,38 @@
 {% extends "base.html" %}
+{% block before %} <link rel="stylesheet" href="../../static/styles.css"> {% endblock %}
 {% block title %} Cards {% endblock %}
 
 {% block body %}
 
 <h1> Cards </h1>
-<ul>
-    {% for card in cards %}
-    {{ card.card_name }}
+    {% for card in cards %}    
+        <div class="box">
+
+            <div class="div_type">
+                <div class="type">{{ card.card_type }}</div>
+            </div>
+
+            <div class="div_family">
+                <div class="family">
+                    {% if card.card_family == "hearts" %}
+                    <img src="../../static/hearts.png" alt="">
+                    {% elif card.card_family == "spades" %}
+                    <img src="../../static/spades.png" alt="">
+                    {% elif card.card_family == "clubs" %}
+                    <img src="../../static/clubs.png" alt="">
+                    {% elif card.card_family == "diamonds" %}
+                    <img src="../../static/diamonds.png" alt="">
+                    {% elif card.card_family == "joker" %}
+                    <div class="type">joker</div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="div_type_rev">
+                <div class="type">{{ card.card_type }}</div>
+            </div>
+
+        </div>
     {% endfor %}
-</ul>
 
 {% endblock %}

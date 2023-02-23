@@ -34,7 +34,7 @@ class Deck(db.Model):
 
     deck_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     deck_name = db.Column(db.String)
-    private = db.Column(db.Boolean, default=True)
+    private = db.Column(db.Boolean)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.category_id"))
 
     deck = db.relationship("Category", backref="deck")

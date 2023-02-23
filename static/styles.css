@@ -1,0 +1,38 @@
+
+
+.box {
+    background-color: rgb(116, 116, 116);
+ width: 137px;
+ height: 187px;
+ display: flex;
+ flex-direction: column;
+ justify-content:space-between;
+}
+
+
+.type {
+    font-size: 32px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+img {
+    height: 37px;
+    height: 37px;
+}
+
+.div_type {
+    display: flex;
+    justify-content: start;
+}
+
+.div_family {
+    display: flex;
+    justify-content: center;
+}
+
+.div_type_rev {
+    display: flex;
+    justify-content: start;
+    transform: rotate(180deg);
+}
+

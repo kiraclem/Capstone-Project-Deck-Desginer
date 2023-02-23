@@ -85,7 +85,7 @@ def create_cat():
         return redirect("/")
     
     #DELETE
-@app.route("/categories/<category_id>/delete")
+@app.route("/categories/delete/<category_id>")
 def delete(category_id):
     user_session = session.get("user_id")
 
@@ -115,7 +115,7 @@ def decks(category_id):
         return redirect("/")
 
     #CREATE
-@app.route("/categories/<category_id>/create_deck")
+@app.route("/categories/create_deck/<category_id>")
 def create_deck(category_id):
     
     user_session = session.get("user_id")
@@ -134,7 +134,6 @@ def create_decks(category_id):
     user_session = session.get("user_id")
 
     if user_session:
-        
         deck_name = request.form.get("deck_name")
         private = request.form.get("private")
         private = bool(private)
@@ -142,13 +141,21 @@ def create_decks(category_id):
             deck1 = crud.create_deck(deck_name, private, category_id)
             db.session.add(deck1)
             db.session.commit()
+            for name in card_list:
+                card_name = name
+                card_type = crud.get_card_type(name)
+                card_family = crud.get_card_family(name)
+            
+                db_card = crud.create_card(card_name, card_type, card_family, deck1.deck_id, 1)
+                db.session.add(db_card)
+                db.session.commit()
         return redirect ("/categories")
     else:
         flash("please log in to get access to this page.")
         return redirect("/")
 
     #DELETE
-@app.route("/categories/<category_id>/<deck_id>/delete")
+@app.route("/categories/delete/<category_id>/<deck_id>")
 def delete_deck(category_id, deck_id):
     user_session = session.get("user_id")
 
@@ -170,23 +177,12 @@ def view_cards(category_id, deck_id):
 
     if user_session:
         cards = crud.get_cards_by_deck(deck_id)
-        if len(cards) == 0:
-            for name in card_list:
-                card_name = name
-                card_type = crud.get_card_type(name)
-                card_family = crud.get_card_family(name)
-            
-                db_card = crud.create_card(card_name, card_type, card_family, deck_id, 1)
-                db.session.add(db_card)
-                db.session.commit()
-            return redirect("/categories")
-        else:
-            return render_template("view_user_cards.html", cards=cards)
+        return render_template("view_user_cards.html", cards=cards)
     else:
         flash("please log in to get access to this page.")
         return redirect("/")
 
 
 if __name__ == "__main__":
-    connect_to_db(app)
+    connect_to_db(app, echo=False)
     app.run(host="0.0.0.0", debug=True)
