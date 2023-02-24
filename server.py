@@ -46,6 +46,11 @@ def logout():
     flash("logged out successfully")
     return redirect("/")
 
+#TEMPLATE
+@app.route("/template")
+def temp():
+    return render_template("template.html")
+
 #PUBLIC DECKS:
 @app.route("/view_decks")
 def all_decks():

@@ -2,13 +2,19 @@
 {% block before %} <link rel="stylesheet" href="../../static/styles.css"> {% endblock %}
 {% block title %} Cards {% endblock %}
 
+
+{% block body_title %} <h1> Cards </h1> {% endblock %}
 {% block body %}
 
-<h1> Cards </h1>
-    {% for card in cards %}    
+    {% for card in cards %}  
+
         <div class="box" style="background-image:url({{card.image.image_ref}})";>
             <div class="div_type">
-                <div class="type">{{ card.card_type }}</div>
+                <div class="type">
+                    {% if card.card_family != "joker" %}
+                    {{ card.card_type }}
+                    {% endif %}
+                </div>
             </div>
 
             <div class="div_family">
@@ -28,7 +34,11 @@
             </div>
 
             <div class="div_type_rev">
-                <div class="type">{{ card.card_type }}</div>
+                <div class="type">     
+                    {% if card.card_family != "joker" %}
+                    {{ card.card_type }}
+                    {% endif %}
+                </div>
             </div>
 
         </div>

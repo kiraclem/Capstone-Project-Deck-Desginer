@@ -42,7 +42,7 @@ with app.app_context():
             #     model.db.session.add(db_deck)
             #     model.db.session.commit()
     #images
-                # image_ref = "../../image_uploads/card.png"
+                # image_ref = "grey background"
                 # db_image = crud.create_image(image_ref)
                 # model.db.session.add(db_image)
                 # model.db.session.commit()

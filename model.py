@@ -47,7 +47,7 @@ class Image(db.Model):
     __tablename__ = "images"
 
     image_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    image_ref = db.Column(db.String)
+    image_ref = db.Column(db.String, unique=True)
 
     card = db.relationship("Card", backref="image")
     

@@ -10,6 +10,21 @@
     </title>
 </head>
 <body>
+  <div class="head">
+    {% block body_title %}  {% endblock %}
+  </div>
+
+  <div class="nav_style">
+
+     <a class="nav" href="/template">Getting Started</a>
+     <a class="nav" href="/">Home</a>
+     <a class="nav" href="/view_decks">Browse Decks</a>
+     <a class="nav" href="/categories">Your Decks</a>
+     <a class="nav" href="/login">Login</a>
+     <a class="nav" href="/logout">Logout</a> 
+
+  </div>
+
  {% block body %} {% endblock %}
 
  {% for msg in get_flashed_messages() %}
@@ -17,5 +32,6 @@
     {{msg}}
   </p>
   {% endfor %}
+
 </body>
 </html>

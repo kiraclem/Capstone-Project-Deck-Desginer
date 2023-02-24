@@ -1,17 +1,21 @@
 {% extends "base.html" %}
+{% block before %} <link rel="stylesheet" href="../../static/styles.css"> {% endblock %}
 {% block title %} Categories {% endblock %}
 
+
+{% block body_title %}<h1> Categories </h1>{% endblock %}
+
 {% block body %}
+<div class="right_side">
+<a style="font-size: 100px;" href="/categories/create">+</a>
+</div>
 
-<h1> Categories </h1> 
-<h2><a href="/categories/create">+</a></h2>
-<ul>
     {% for cat in categories %}
-    <h2><a href="/categories/{{ cat.category_id }}">{{cat.category_name}}</a></h2>
+    <div class="space_btwn">
+    <a style="font-size: 35px;" href="/categories/{{ cat.category_id }}">{{cat.category_name}}</a>
+    <a style="font-size: 50px;" href="/categories/delete/{{ cat.category_id }}">-</a>
+    </div>
 
-    <h2><a href="/categories/delete/{{ cat.category_id }}">-</a></h2>
-
-</ul>
     {% endfor %}
 
 {% endblock %}
