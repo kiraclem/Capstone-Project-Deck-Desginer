@@ -1,13 +1,19 @@
-from flask import Flask, render_template, redirect, request, session, flash
+from flask import Flask, render_template, redirect, request, session, flash, url_for
 from model import connect_to_db, db
+import os
 from lists import card_list
+from werkzeug.utils import secure_filename
+
 import crud
 
+UPLOAD_FOLDER = './static/image_uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 from jinja2 import StrictUndefined 
 
 app = Flask(__name__)
 app.secret_key = "Hello"
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.jinja_env.undefined = StrictUndefined
 
 #HOME, LOGIN, AND LOGOUT:
@@ -137,18 +143,27 @@ def create_decks(category_id):
         deck_name = request.form.get("deck_name")
         private = request.form.get("private")
         private = bool(private)
+        f = request.files["image"]
+        filename = secure_filename(f.filename)
+        f.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+
         with app.app_context():
             deck1 = crud.create_deck(deck_name, private, category_id)
             db.session.add(deck1)
+            db.session.commit()
+            image_ref = f"../../static/image_uploads/{filename}"
+            image = crud.create_image(image_ref)
+            db.session.add(image)
             db.session.commit()
             for name in card_list:
                 card_name = name
                 card_type = crud.get_card_type(name)
                 card_family = crud.get_card_family(name)
             
-                db_card = crud.create_card(card_name, card_type, card_family, deck1.deck_id, 1)
+                db_card = crud.create_card(card_name, card_type, card_family, deck1.deck_id, image.image_id)
                 db.session.add(db_card)
                 db.session.commit()
+
         return redirect ("/categories")
     else:
         flash("please log in to get access to this page.")
@@ -169,6 +184,7 @@ def delete_deck(category_id, deck_id):
         flash("please log in to get access to this page.")
         return redirect("/")
     
+#IMAGES
 
 #CARDS
 @app.route("/categories/<category_id>/<deck_id>")

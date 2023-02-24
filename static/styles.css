@@ -1,7 +1,7 @@
 
 
 .box {
-    background-color: rgb(116, 116, 116);
+ background-size: cover;
  width: 137px;
  height: 187px;
  display: flex;

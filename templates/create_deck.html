@@ -3,15 +3,17 @@
 
 {% block body %}
 
-<h1> Create Category </h1>
-<form action="/categories/{{category_id}}", method="POST">
+<h1> Create Deck </h1>
+<form action="/categories/{{category_id}}", method="POST" enctype="multipart/form-data">
 
     <p>Deck Name <input type="text" name="deck_name"></p>
     Deck Visibility <select name="private" id="private">
         <option value=1>private</option>
         <option value=>public</option>
     </select>
-
+    <br>
+    <br>
+    Deck Image <input type="file", name="image" accept=".png, .jpeg">
     <p><input type="submit"></p>
 </form>
 

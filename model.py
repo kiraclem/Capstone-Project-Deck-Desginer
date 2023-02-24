@@ -47,7 +47,6 @@ class Image(db.Model):
     __tablename__ = "images"
 
     image_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    #LargeBinary, (file selection HTML)
     image_ref = db.Column(db.String)
 
     card = db.relationship("Card", backref="image")

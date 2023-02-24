@@ -33,31 +33,31 @@ with app.app_context():
             model.db.session.commit()
 
     #decks
-            for d in range(1):
-                deck_name= f"deck{d}"
-                private= True
-                category_id = int(f"{c + 1}")
+            # for d in range(1):
+            #     deck_name= f"deck{d}"
+            #     private= True
+            #     category_id = int(f"{c + 1}")
 
-                db_deck = crud.create_deck(deck_name, private, category_id)
-                model.db.session.add(db_deck)
-                model.db.session.commit()
+            #     db_deck = crud.create_deck(deck_name, private, category_id)
+            #     model.db.session.add(db_deck)
+            #     model.db.session.commit()
     #images
-                image_ref = f"place holder image{c}"
-                db_image = crud.create_image(image_ref)
-                model.db.session.add(db_image)
-                model.db.session.commit()
+                # image_ref = "../../image_uploads/card.png"
+                # db_image = crud.create_image(image_ref)
+                # model.db.session.add(db_image)
+                # model.db.session.commit()
 
     #cards
-                for name in card_list:
-                    card_name = name
-                    card_type = crud.get_card_type(name)
-                    card_family = crud.get_card_family(name)
-                    deck_id = int(f"{c + 1}")
-                    image_id = int(f"{c + 1}")
+                # for name in card_list:
+                #     card_name = name
+                #     card_type = crud.get_card_type(name)
+                #     card_family = crud.get_card_family(name)
+                #     deck_id = int(f"{c + 1}")
+                #     image_id = int(f"{c + 1}")
 
-                    db_card = crud.create_card(card_name, card_type, card_family, deck_id, image_id)
-                    model.db.session.add(db_card)
-                    model.db.session.commit()
+                #     db_card = crud.create_card(card_name, card_type, card_family, deck_id, image_id)
+                #     model.db.session.add(db_card)
+                #     model.db.session.commit()
         
  
 
