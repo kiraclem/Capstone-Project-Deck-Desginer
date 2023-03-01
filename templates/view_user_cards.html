@@ -6,6 +6,9 @@
 {% block body_title %} <h1> Cards </h1> {% endblock %}
 {% block body %}
 
+<div class="grid_container">
+    <div class="grid_user_cards">
+
     {% for card in cards %}  
 
         <div class="box" style="background-image:url({{card.image.image_ref}})";>
@@ -44,5 +47,6 @@
         </div>
         <br>
     {% endfor %}
-
+    </div>
+</div>
 {% endblock %}

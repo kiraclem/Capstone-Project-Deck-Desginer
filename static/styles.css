@@ -1,8 +1,10 @@
-
-body {
+* {
     margin:0px;
     padding: 0px;
     border: 0px;
+}
+
+body {
     background-image: url(../static/bg_img.jpg);
 }
 
@@ -10,7 +12,7 @@ body {
     margin-top: 0px;
     padding: none;
     background-color: rgb(27, 27, 27);
-    height: 60px;
+    height: 80px;
     color: rgb(161, 161, 161);
     text-align: center;
     font-family:cursive
@@ -30,8 +32,30 @@ body {
     font-family:cursive
 }
 
+.grid_container {
+    display: flex;
+    justify-content: center;
+    }
+
+.grid_user_cards {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+    gap: 50px 50px;
+    width: 1100px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.grid_view_decks {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    gap: 100px 200px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
 .box {
-    background-color: rgb(78, 78, 78);
+    background-color: rgb(255, 255, 255);
     background-size: cover;
     width: 137px;
     height: 187px;
@@ -40,7 +64,9 @@ body {
     justify-content:space-between;
    }
 
+
 .type {
+    padding-left: 3px;
     font-size: 32px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -49,6 +75,7 @@ img {
     height: 37px;
     height: 37px;
 }
+
 
 .div_type {
     display: flex;
@@ -90,6 +117,12 @@ img {
     background-color: brown; opacity: 0;
     height: 5px;
     width: 200px;
+}
+
+.column {
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 a {
     color: black;

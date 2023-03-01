@@ -10,40 +10,41 @@
 <a style="font-size: 100px;" href="/categories/create_deck/{{ category_id }}">+</a>
 </div>
 
-<div class="row">
-    {% for deck in decks %}
-   <div class="center">
-    <div class="space"></div>
-        <a href="/categories/{{ category_id }}/{{ deck.deck_id }}">{{ deck.deck_name }}</a>
-        <p>{% if deck.private == True %}
-            Private
-           {% elif deck.private == False %}
-            Public 
-           {% endif %} </p>
-           <a href="/categories/{{ category_id }}/{{ deck.deck_id }}"><div class="box" style="background-image:url({{deck.card[0].image.image_ref}})";>
-            <div class="div_type">
-                <div class="type">
-                    1
+<div class="grid_container">
+    <div class="grid_view_decks">
+        {% for deck in decks %}
+        <div class="center">
+                <a href="/categories/{{ category_id }}/{{ deck.deck_id }}">{{ deck.deck_name }}</a>
+                <p>{% if deck.private == True %}
+                    Private
+                {% elif deck.private == False %}
+                    Public 
+                {% endif %} </p>
+                <a href="/categories/{{ category_id }}/{{ deck.deck_id }}"><div class="box" style="background-image:url({{deck.card[0].image.image_ref}})";>
+                    <div class="div_type">
+                        <div class="type">
+                            1
+                        </div>
+                    </div>
+            
+                    <div class="div_family">
+                        <div class="family">
+                            <img src="../../static/diamonds.png" alt="">
+                        </div>
+                    </div>
+            
+                    <div class="div_type_rev">
+                        <div class="type">     
+                            1
+                        </div>
+                    </div>
+            
                 </div>
-            </div>
-    
-            <div class="div_family">
-                <div class="family">
-                    <img src="../../static/diamonds.png" alt="">
-                </div>
-            </div>
-    
-            <div class="div_type_rev">
-                <div class="type">     
-                    1
-                </div>
-            </div>
-    
-        </div>
-        <br>
-        <a href="/categories/delete/{{ category_id }}/{{ deck.deck_id }}"><img src="../static/garbage-can.png" alt=""></a>
-    </div></a>
-    {% endfor %}
+                <br>
+                <a href="/categories/delete/{{ category_id }}/{{ deck.deck_id }}"><img src="../static/garbage-can.png" alt=""></a>
+            </div></a>
+        {% endfor %}
+    </div>  
 </div>
 
 {% endblock %}

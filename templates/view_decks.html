@@ -6,29 +6,39 @@
 {% block body %}
 
 
-{% for deck in public_decks %}
-    {{ deck.deck_name }}
-    <div class="box" style="background-image:url({{deck.card[0].image.image_ref}})";>
-        <div class="div_type">
-            <div class="type">
-                1
-            </div>
-        </div>
+<div class="grid_container">
+    <div class="grid_view_decks">
 
-        <div class="div_family">
-            <div class="family">
-                <img src="../../static/diamonds.png" alt="">
-            </div>
-        </div>
+        {% for deck in public_decks %}
+        <div class="column"> 
+            {{ deck.deck_name }}
+            <br>
+            <br>
+            <div class="box" style="background-image:url({{deck.card[0].image.image_ref}})";>
+                <div class="div_type">
+                    <div class="type">
+                        1
+                    </div>
+                </div>
 
-        <div class="div_type_rev">
-            <div class="type">     
-                1
+                <div class="div_family">
+                    <div class="family">
+                        <img src="../../static/diamonds.png" alt="">
+                    </div>
+                </div>
+
+                <div class="div_type_rev">
+                    <div class="type">     
+                        1
+                    </div>
+                </div>
+
             </div>
+            <br>
         </div>
+        {% endfor %}
 
     </div>
-    <br>
-{% endfor %}
+</div>
 
 {% endblock %}
