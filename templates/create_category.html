@@ -7,12 +7,13 @@
 
 
 {% block body %}
-
+<div class="create_form">
 <form action="/categories", method="POST">
 
-    <p>Category Name: <input type="text" name="category_name"></p>
-
-    <p><input type="submit"></p>
+    <p>Category Name: <input class="input_text" type="text" name="category_name"></p>
+    <br>
+    <br>
+    <p><input type="submit" class="input_submit"></p>
 </form>
-
+</div>
 {% endblock %}

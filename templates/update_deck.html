@@ -1,21 +1,17 @@
 {% extends "base.html" %}
 {% block before %} <link rel="stylesheet" href="../../static/styles.css"> {% endblock %}
-{% block title %} Category {% endblock %}
+{% block title %} Update Deck {% endblock %}
 
-{% block body_title %}<h1> Create Deck </h1>{% endblock %}
 
 {% block body %}
 <div class="create_form">
-    <form action="/categories/{{category_id}}", method="POST" enctype="multipart/form-data">
-            <p>Deck Name <input class="input_text" type="text" name="deck_name"></p>
+    <form action="/update_deck/{{deck.deck_id}}", method="POST">
+            <p>Deck Name <input class="input_text" type="text" name="deck_name" value="{{deck.deck_name}}"></p>
             <br>
             <p>Deck Visibility <select name="private" id="private">
                 <option value=1>private</option>
                 <option value=>public</option>
             </select></p>
-            <br>
-            <p>Deck Image
-            <input type="file", name="image" accept=".png, .jpeg .jpg"></p> 
             <br>
             <br>
             <p><input type="submit" class="input_submit"></p>

@@ -116,7 +116,18 @@ img {
 .space {
     background-color: brown; opacity: 0;
     height: 5px;
-    width: 200px;
+    width: 30px;
+}
+.input_text {
+    font-size: 20px;
+}
+.input_submit {
+    font-size: 17px; 
+    font-family: cursive
+}
+.create_form {
+    padding-left: 30px;
+    padding-top: 20px;
 }
 
 .column {

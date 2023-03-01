@@ -124,6 +124,34 @@ def decks(category_id):
     else:
         flash("please log in to get access to this page.")
         return redirect("/")
+    
+    #UPDATE
+@app.route("/update_deck/<deck_id>")
+def edit_deck(deck_id):
+    deck = crud.get_deck_by_id(deck_id)
+    return render_template("update_deck.html", deck=deck)
+
+@app.route("/update_deck/<deck_id>", methods=["POST"])
+def update_deck(deck_id):
+    user_session = session.get("user_id")
+
+    if user_session:
+
+        name = request.form.get("deck_name")
+        private = request.form.get("private")
+        private = bool(private)
+        with app.app_context():
+            deck = crud.get_deck_by_id(deck_id)
+            deck.deck_name = name
+            deck.private = private
+            db.session.add(deck)
+            db.session.commit()
+
+        return redirect("/categories")
+    
+    else:
+        flash("please log in to get access to this page.")
+        return redirect("/")
 
     #CREATE
 @app.route("/categories/create_deck/<category_id>")
@@ -198,7 +226,8 @@ def view_cards(category_id, deck_id):
 
     if user_session:
         cards = crud.get_cards_by_deck(deck_id)
-        return render_template("view_user_cards.html", cards=cards)
+        deck = crud.get_deck_by_id(deck_id)
+        return render_template("view_user_cards.html", cards=cards, deck=deck)
     else:
         flash("please log in to get access to this page.")
         return redirect("/")

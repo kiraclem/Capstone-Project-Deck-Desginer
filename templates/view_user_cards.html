@@ -5,6 +5,14 @@
 
 {% block body_title %} <h1> Cards </h1> {% endblock %}
 {% block body %}
+<br>
+<br>
+<br>
+<div class="center">
+<div class="row">
+<p style="font-size: 25px;">{{ deck.deck_name }} </p> <div class="space"></div> <a href="/update_deck/{{deck.deck_id}}"><img src="../../static/edit-icon.png" alt="edit-icon"></a>
+</div>
+</div>
 
 <div class="grid_container">
     <div class="grid_user_cards">
