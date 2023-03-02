@@ -47,6 +47,9 @@ def get_public_decks():
     public_decks = Deck.query.filter(Deck.private == False).all()
     return public_decks
     
+def get_all_decks():
+    decks = Deck.query.all()
+    return decks
 
 #GET BY ID
 def get_user_by_id(user_id):

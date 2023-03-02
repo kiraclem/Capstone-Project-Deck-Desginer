@@ -11,7 +11,7 @@
 
         {% for deck in public_decks %}
         <div class="column"> 
-            {{ deck.deck_name }}
+            <p>{{ deck.deck_name }}</p>
             <br>
             <br>
             <div class="box" style="background-image:url({{deck.card[0].image.image_ref}})";>

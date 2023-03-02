@@ -19,7 +19,7 @@
      <a class="nav" href="/template">Getting Started</a>
      <a class="nav" href="/">Home</a>
      <a class="nav" href="/view_decks">Browse Decks</a>
-     <a class="nav" href="/categories">Your Decks</a>
+     <a class="nav" href="/categories">Your Deck Categories</a>
      <a class="nav" href="/login">Login</a>
      <a class="nav" href="/logout">Logout</a> 
 
@@ -27,10 +27,14 @@
 
  {% block body %} {% endblock %}
 
+  <br>
+  <br>
  {% for msg in get_flashed_messages() %}
+ <div class="center">
   <p class="flash-msg">
     {{msg}}
   </p>
+ </div>
   {% endfor %}
 
 </body>

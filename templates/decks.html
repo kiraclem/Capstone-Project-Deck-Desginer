@@ -10,6 +10,15 @@
 <a style="font-size: 100px;" href="/categories/create_deck/{{ category_id }}">+</a>
 </div>
 
+{% if decks|length == 0 %}
+<div class="center">
+    <br>
+    <br>
+    <p> To create a deck click </p>
+    <p> the plus icon at the right </p>
+</div>
+{% endif %}
+
 <div class="grid_container">
     <div class="grid_view_decks">
         {% for deck in decks %}

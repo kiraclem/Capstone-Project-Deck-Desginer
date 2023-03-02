@@ -9,7 +9,14 @@
 <div class="right_side">
 <a style="font-size: 100px;" href="/categories/create">+</a>
 </div>
-
+    {% if categories|length == 0 %}
+    <div class="center">
+        <br>
+        <br>
+        <p> To create a category click </p>
+        <p> the plus icon at the right </p>
+    </div>
+    {% endif %}
     {% for cat in categories %}
     <div class="space_btwn">
     <a style="font-size: 35px;" href="/categories/{{ cat.category_id }}">{{cat.category_name}}</a>

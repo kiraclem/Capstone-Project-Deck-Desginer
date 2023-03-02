@@ -102,6 +102,11 @@ def delete(category_id):
 
     if user_session:
         with app.app_context():
+            category_decks = crud.get_decks_by_category(category_id)
+            for deck in category_decks:
+                db.session.delete(deck)
+                db.session.commit()
+
             category = crud.get_category_by_id(category_id)
             db.session.delete(category)
             db.session.commit()

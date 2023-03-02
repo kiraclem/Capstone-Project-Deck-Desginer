@@ -29,6 +29,7 @@ body {
 .nav {
     color: rgb(109, 109, 109);
     text-decoration: none;
+    font-size: 18px;
     font-family:cursive
 }
 
@@ -142,4 +143,7 @@ a {
 }
 p {
     font-family:cursive
+}
+.empty {
+    font-size: 20px;
 }
